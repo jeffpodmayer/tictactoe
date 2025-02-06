@@ -2,7 +2,7 @@ import Square from "./Square";
 import PropTypes from "prop-types";
 import "./GameHistory.css";
 
-function GameHistory({ history, winners }) {
+const GameHistory = ({ history, winners }) => {
   return (
     <div className="game-history">
       <h2>Game History</h2>
@@ -32,7 +32,7 @@ function GameHistory({ history, winners }) {
       </ul>
     </div>
   );
-}
+};
 
 GameHistory.propTypes = {
   history: PropTypes.arrayOf(PropTypes.array).isRequired,

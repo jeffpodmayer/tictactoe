@@ -2,7 +2,6 @@ import "./App.css";
 import { useState } from "react";
 import Square from "./Square";
 import GameHistory from "./GameHistory";
-import "./GameHistory.css";
 
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -21,6 +20,9 @@ function App() {
     if (winner) {
       setHistory([...history, newBoard]);
       setWinners([...winners, winner]);
+    } else if (newBoard.every((square) => square !== null)) {
+      setHistory([...history, newBoard]);
+      setWinners([...winners, "Draw"]);
     }
   };
 
