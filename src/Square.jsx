@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./Square.css"; // Import the stylesheet
 
 function Square({ value, onClick }) {
   return (

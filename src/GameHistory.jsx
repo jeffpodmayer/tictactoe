@@ -1,11 +1,12 @@
 import Square from "./Square";
 import PropTypes from "prop-types";
+import "./GameHistory.css";
 
-function GameHistory({ history }) {
+function GameHistory({ history, winners }) {
   return (
-    <div>
+    <div className="game-history">
       <h2>Game History</h2>
-      <ul>
+      <ul className="board">
         {history.map((boardState, index) => (
           <li key={index}>
             <div className="board">
@@ -20,6 +21,11 @@ function GameHistory({ history }) {
                       ))}
                   </div>
                 ))}
+              {winners[index] ? (
+                <p>Winner: {winners[index]}</p>
+              ) : (
+                <p>No winner</p>
+              )}
             </div>
           </li>
         ))}
@@ -30,6 +36,7 @@ function GameHistory({ history }) {
 
 GameHistory.propTypes = {
   history: PropTypes.arrayOf(PropTypes.array).isRequired,
+  winners: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default GameHistory;

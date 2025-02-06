@@ -7,6 +7,7 @@ function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([]);
+  const [winners, setWinners] = useState([]);
 
   const handleClick = (index) => {
     if (board[index] || calculateWinner(board)) return;
@@ -19,6 +20,7 @@ function App() {
     const winner = calculateWinner(newBoard);
     if (winner) {
       setHistory([...history, newBoard]); // Save the board state only if there's a winner
+      setWinners([...winners, winner]);
     }
   };
 
@@ -29,7 +31,6 @@ function App() {
   const resetGame = () => {
     setBoard(Array(9).fill(null));
     setXIsNext(true);
-    setHistory([]); // Optionally reset history if you want to clear past games
   };
 
   const winner = calculateWinner(board);
@@ -55,7 +56,7 @@ function App() {
           <button onClick={resetGame}>Reset Game</button>
         </div>
       )}
-      <GameHistory history={history} />
+      <GameHistory history={history} winners={winners} />
     </div>
   );
 }
