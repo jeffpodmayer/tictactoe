@@ -41,6 +41,7 @@ function App() {
   return (
     <div className="App">
       <h1>Tic Tac Toe</h1>
+      {/* 3 by 3  */}
       <div className="board">
         {Array(3)
           .fill(null)
