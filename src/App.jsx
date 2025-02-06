@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Square from "./Square";
 import GameHistory from "./GameHistory";
+import "./GameHistory.css";
 
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -16,10 +17,9 @@ function App() {
     setBoard(newBoard);
     setXIsNext(!xIsNext);
 
-    // Check for a winner after the move
     const winner = calculateWinner(newBoard);
     if (winner) {
-      setHistory([...history, newBoard]); // Save the board state only if there's a winner
+      setHistory([...history, newBoard]);
       setWinners([...winners, winner]);
     }
   };
@@ -56,7 +56,9 @@ function App() {
           <button onClick={resetGame}>Reset Game</button>
         </div>
       )}
-      <GameHistory history={history} winners={winners} />
+      <div className="game-history-container">
+        <GameHistory history={history} winners={winners} />
+      </div>
     </div>
   );
 }
